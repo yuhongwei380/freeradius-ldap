@@ -32,7 +32,7 @@ RUN git clone https://github.com/yuhongwei380/freeradius-ldap
 RUN cp freeradius-ldap/config/default /etc/freeradius/3.0/sites-available/default
 RUN cp freeradius-ldap/config/inner-tunnel /etc/freeradius/3.0/sites-available/inner-tunnel
 RUN cp freeradius-ldap/config/ldap.template /etc/freeradius/3.0/mods-available/ldap
-RUN mkdir /etc/freeradius/certs/ssl
+RUN mkdir /etc/freeradius/3.0/certs/ssl
 
 # 添加启动脚本
 COPY start.sh /start.sh
