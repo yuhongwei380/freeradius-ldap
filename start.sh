@@ -20,10 +20,10 @@ sed -i "s/ldap_bind_password/$ldap_bind_password/g" /etc/freeradius/3.0/mods-ava
 sed -i "s/ldap_basedn/$ldap_basedn/g" /etc/freeradius/3.0/mods-available/ldap
 
 # 打印替换后的配置文件内容
-echo "/etc/freeradius/proxy.conf:"
-cat /etc/freeradius/proxy.conf
-echo "/etc/freeradius/clients.conf:"
-cat /etc/freeradius/clients.conf
+echo "/etc/freeradius/3.0/proxy.conf:"
+cat /etc/freeradius/3.0/proxy.conf
+echo "/etc/freeradius/3.0/clients.conf:"
+cat /etc/freeradius/3.0/clients.conf
 
 # 启动 cron 守护进程（前台模式）
 cron -f &
