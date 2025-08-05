@@ -8,6 +8,8 @@ echo "LDAP Base DN: $ldap_basedn"
 
 ll /etc/freeradius/3.0/certs/
 
+ln -sf /etc/freeradius/3.0/mods-available/ldap /etc/freeradius/3.0/mods-enabled/ldap
+
 #chown freerad:freerad /etc/freeradius/3.0/mods-enabled/ldap
 #ssl证书部分
 sed -i '/private_key_file =/c\private_key_file = ${certdir}/ssl/radius.key' /etc/freeradius/3.0/mods-enabled/eap
