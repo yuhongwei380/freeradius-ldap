@@ -1,0 +1,23 @@
+version: '3'
+services:
+  radius:
+    image: yuhongwei1997/freeradius-ldap:v1.0
+    container_name: radius-azure
+    env_file:
+      - .env
+    volumes:
+      - ./ssl/radius.key:/etc/freeradius/certs/ssl/radius.key
+      - ./ssl/radius.crt:/etc/freeradius/certs/ssl/radius.crt
+      - ./ssl/radius_ca.pem:/etc/freeradius/certs/ssl/radius_ca.pem
+      - ./log:/var/log/freeradius/
+      - ./clients.conf:/etc/freeradius/clients.conf
+      # 如果需要查看 LDAP 配置文件，可以添加：
+      # - ./mods-available/ldap:/etc/freeradius/mods-available/ldap
+    network_mode: host
+    restart: always
+    # 可选：添加健康检查
+    # healthcheck:
+    #   test: ["CMD", "radtest", "testuser", "testpass", "localhost", "0", "testing123"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
