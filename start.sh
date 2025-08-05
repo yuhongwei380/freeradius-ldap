@@ -26,8 +26,8 @@ echo "/etc/freeradius/3.0/clients.conf:"
 cat /etc/freeradius/3.0/clients.conf
 
 # 启动 cron 守护进程（前台模式）
-cron -f &
+#cron -f &
 
 # 启动程序
 #exec freeradius -X
-exec freeradius -f
+exec freeradius -X
