@@ -289,7 +289,8 @@ ldap {
 		#
 		#  If using Active Directory you are likely to need "group"
 		#  instead of "posixGroup".
-		filter = '(objectClass=posixGroup)'
+		#filter = '(objectClass=posixGroup)'
+		filter = '(objectClass=Group)'
 
 		# Search scope, may be 'base', 'one', sub' or 'children'
 #		scope = 'sub'
