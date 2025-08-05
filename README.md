@@ -32,7 +32,7 @@ filter = '(objectClass=Group)'
 ssl
 ```
 chmod 644 /etc/freeradius/3.0/certs/ssl/radius.crt
-chmod 600 /etc/freeradius/3.0/certs/ssl/radius.key
+chmod 644 /etc/freeradius/3.0/certs/ssl/radius.key
 chmod 644 /etc/freeradius/3.0/certs/ssl/radius_ca.pem
 chmod 755 /etc/freeradius/3.0/certs/ssl
 ```
@@ -40,7 +40,7 @@ chmod 755 /etc/freeradius/3.0/certs/ssl
 # Docker镜像
 
 chmod 644 ssl/radius.crt
-chmod 600 ssl/radius.key
+chmod 644 ssl/radius.key
 chmod 644 ssl/radius_ca.pem
 chmod 755 ssl/
 
