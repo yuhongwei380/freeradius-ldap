@@ -6,11 +6,11 @@ echo "LDAP Identity: $ldap_bind_identity"
 echo "LDAP Password: $ldap_bind_password"
 echo "LDAP Base DN: $ldap_basedn"
 
+#chown freerad:freerad /etc/freeradius/3.0/mods-enabled/ldap
 #ssl证书部分
 sed -i '/private_key_file =/c\private_key_file = ${certdir}/ssl/radius.key' /etc/freeradius/3.0/mods-enabled/eap
 sed -i '/certificate_file =/c\certificate_file = ${certdir}/ssl/radius.crt' /etc/freeradius/3.0/mods-enabled/eap
 sed -i '/ca_file =/c\ca_file = ${cadir}/ssl/radius_ca.pem' /etc/freeradius/3.0/mods-enabled/eap
-chmod a+x /etc/freeradius/3.0/mods-enabled/eap
 
 
 # LDAP配置替换 - 添加这部分
