@@ -283,6 +283,8 @@ listen {
 #  Make *sure* that 'preprocess' comes before any realm if you
 #  need to setup hints for the remote radius server
 authorize {
+	#预认证ldap用户
+	pre_auth_trigger
 	#
 	#  Take a User-Name, and perform some checks on it, for spaces and other
 	#  invalid characters.  If the User-Name appears invalid, reject the
@@ -309,6 +311,7 @@ authorize {
 	#
 	#  It takes care of processing the 'raddb/mods-config/preprocess/hints' 
 	#  and the 'raddb/mods-config/preprocess/huntgroups' files.
+	
 	preprocess
 
 	#  If you intend to use CUI and you require that the Operator-Name
