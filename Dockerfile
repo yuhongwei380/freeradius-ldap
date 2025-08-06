@@ -4,8 +4,6 @@ FROM ubuntu:24.04
 
 #设置时区
 ENV DEBIAN_FRONTEND=noninteractive
-RUN sed -i 's@http://.*archive.ubuntu.com@http://mirrors.aliyun.com@g' /etc/apt/sources.list
-RUN sed -i 's@http://.*security.ubuntu.com@http://mirrors.aliyun.com@g' /etc/apt/sources.list
 RUN apt-get update && apt-get install -y tzdata
 RUN ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN dpkg-reconfigure --frontend noninteractive tzdata  
