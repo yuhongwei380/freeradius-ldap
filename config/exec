@@ -1,29 +1,25 @@
 # /etc/freeradius/3.0/mods-available/exec
+
+# 为预认证定义的特定实例
 exec pre_auth_trigger {
     program = "/usr/local/bin/pre_auth_ldap_wrapper.sh"
     wait = yes
 
-    # 【最终修正版】
-    # 使用单一的 environment_variables 指令传递所有所需变量
-    # %{...} 用于获取 RADIUS 请求属性
-    # ${env:...} 用于获取 FreeRADIUS 进程的环境变量 (这些值来自你的 .env 文件)
-    environment_variables = "RAD_USERNAME=%{User-Name}, RAD_USER_PASSWORD=%{User-Password}"
+    # 【修正版】
+    # 使用 %{} 语法来引用 RADIUS 属性和环境变量
+    # %{User-Name}, %{User-Password}: 来自 RADIUS 请求
+    # %{env:...}: 从 FreeRADIUS 进程的环境变量获取值 (这些值来自你的 .env 文件)
+    environment_variables = "RAD_USERNAME=%{User-Name}, RAD_USER_PASSWORD=%{User-Password}, ldap_server=%{env:ldap_server}, ldap_basedn=%{env:ldap_basedn}"
 
     # 其他配置保持不变
     input_pairs = request
     shell_escape = yes
-    timeout = 10 
+    timeout = 10
 }
 
+# 为 accounting 和 post-auth 部分定义的默认实例（即使为空）
 exec {
-    # wait = yes/no
-    # input_pairs = ...
-    # program = ...
-    # 如果您不打算在这两个阶段做任何特殊事情，可以保持这个块为空或注释掉具体的指令
-    # 但这个 "exec { }" 块的存在告诉 FreeRADIUS 有一个名为 "exec" 的模块实例
-    # 或者，如果您想让它什么都不做，可以明确写：
-    # wait = no
-    # input_pairs = none
-    # shell_escape = no
-    # program = "/bin/true" # 一个总是成功且什么都不做的程序
-}
+    # 保持空块或添加基本配置
+    wait = no
+    program = "/bin/true"
+}  
