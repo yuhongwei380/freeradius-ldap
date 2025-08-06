@@ -1,0 +1,9 @@
+# /etc/freeradius/3.0/mods-available/exec
+# 确保 exec 模块已启用或配置
+# 如果文件不存在或为空，可以添加如下内容：
+exec pre_auth_trigger {
+    wait = yes            # 等待脚本执行完成，确保触发发生在 ldap 查询之前
+    input_pairs = request # 将请求属性 (如 User-Name, User-Password) 传递给脚本
+    shell_escape = yes    # 允许 shell 特性，以便访问环境变量
+    program = "/usr/local/bin/pre_auth_ldap_wrapper.sh"
+}
