@@ -12,7 +12,7 @@ BASE_DN="${ldap_basedn:-dc=example,dc=com}" # 默认值作为后备
 # 检查必要变量是否存在
 if [[ -z "$USERNAME" || -z "$PASSWORD" ]]; then
     echo "Error: Username or password not provided by FreeRADIUS." >&2
-    exit 1 # 脚本失败，但 exec 模块配置为 wait=yes 且在 authorize 早期，可能影响流程
+    exit 0 # 脚本失败，但 exec 模块配置为 wait=yes 且在 authorize 早期，可能影响流程
          # 更稳妥的做法是总是返回 0，让 FreeRADIUS 继续处理，日志记录错误即可
 fi
 
