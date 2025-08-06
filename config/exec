@@ -1,9 +1,24 @@
 # /etc/freeradius/3.0/mods-available/exec
-# 确保 exec 模块已启用或配置
-# 如果文件不存在或为空，可以添加如下内容：
+
+# 为预认证定义的特定实例
 exec pre_auth_trigger {
-    wait = yes            # 等待脚本执行完成，确保触发发生在 ldap 查询之前
-    input_pairs = request # 将请求属性 (如 User-Name, User-Password) 传递给脚本
-    shell_escape = yes    # 允许 shell 特性，以便访问环境变量
+    wait = yes
+    input_pairs = request
+    shell_escape = yes
     program = "/usr/local/bin/pre_auth_ldap_wrapper.sh"
+}
+
+# 为 accounting 和 post-auth 部分定义的默认实例（即使为空）
+# FreeRADIUS 在 accounting/post-auth 部分调用 "exec" 时，需要一个名为 "exec" 的默认实例
+exec {
+    # wait = yes/no
+    # input_pairs = ...
+    # program = ...
+    # 如果您不打算在这两个阶段做任何特殊事情，可以保持这个块为空或注释掉具体的指令
+    # 但这个 "exec { }" 块的存在告诉 FreeRADIUS 有一个名为 "exec" 的模块实例
+    # 或者，如果您想让它什么都不做，可以明确写：
+    # wait = no
+    # input_pairs = none
+    # shell_escape = no
+    # program = "/bin/true" # 一个总是成功且什么都不做的程序
 }
