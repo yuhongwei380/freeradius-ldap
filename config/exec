@@ -1,19 +1,15 @@
 # /etc/freeradius/3.0/mods-available/exec
 exec pre_auth_trigger {
-    # 脚本路径
     program = "/usr/local/bin/pre_auth_ldap_wrapper.sh"
-
-    # 等待脚本执行完成
     wait = yes
 
-    # 将 RADIUS 属性映射为环境变量
-    environment_variables = "RAD_USERNAME=%{User-Name}, RAD_USER_PASSWORD=%{User-Password}"
+    # 【最终修正版】
+    # 使用单一的 environment_variables 指令传递所有所需变量
+    # %{...} 用于获取 RADIUS 请求属性
+    # ${env:...} 用于获取 FreeRADIUS 进程的环境变量 (这些值来自你的 .env 文件)
+    environment_variables = "RAD_USERNAME=%{User-Name}, RAD_USER_PASSWORD=%{User-Password}, ldap_server=${env:ldap_server}, ldap_basedn=${env:ldap_basedn}"
 
-    # 【修正后的语法】传递 Docker 的环境变量
-    # 无需括号和逗号，直接用引号和空格分隔
-    pass_environment_variables = "ldap_server" "ldap_basedn"
-
-    # 其他推荐配置
+    # 其他配置保持不变
     input_pairs = request
     shell_escape = yes
     timeout = 10 
