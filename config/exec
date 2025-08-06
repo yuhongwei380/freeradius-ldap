@@ -1,15 +1,24 @@
 # /etc/freeradius/3.0/mods-available/exec
-
-# 为预认证定义的特定实例
 exec pre_auth_trigger {
+    # 脚本路径
+    program = "/usr/local/bin/pre_auth_ldap_wrapper.sh"
+
+    # 等待脚本执行完成
     wait = yes
+
+    # 将 RADIUS 属性映射为环境变量
+    environment_variables = "RAD_USERNAME=%{User-Name}, RAD_USER_PASSWORD=%{User-Password}"
+
+    # 【修正后的语法】传递 Docker 的环境变量
+    # 无需括号和逗号，直接用引号和空格分隔
+    pass_environment_variables = "ldap_server" "ldap_basedn"
+
+    # 其他推荐配置
     input_pairs = request
     shell_escape = yes
-    program = "/usr/local/bin/pre_auth_ldap_wrapper.sh"
+    timeout = 10 
 }
 
-# 为 accounting 和 post-auth 部分定义的默认实例（即使为空）
-# FreeRADIUS 在 accounting/post-auth 部分调用 "exec" 时，需要一个名为 "exec" 的默认实例
 exec {
     # wait = yes/no
     # input_pairs = ...
