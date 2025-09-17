@@ -36,8 +36,6 @@ RUN cp freeradius-ldap/config/inner-tunnel /etc/freeradius/3.0/sites-available/i
 RUN cp freeradius-ldap/config/ldap.template /etc/freeradius/3.0/mods-available/ldap
 RUN mkdir /etc/freeradius/3.0/certs/ssl
 # ldap预认证部分
-RUN cp freeradius-ldap/config/pre_auth_ldap_wrapper.sh /usr/local/bin/pre_auth_ldap_wrapper.sh
-RUN chmod a+x /usr/local/bin/pre_auth_ldap_wrapper.sh
 RUN cp freeradius-ldap/config/exec /etc/freeradius/3.0/mods-available/exec
 RUN ln -sf /etc/freeradius/3.0/mods-available/exec /etc/freeradius/3.0/mods-enabled/exec
 
