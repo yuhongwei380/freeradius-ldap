@@ -35,9 +35,6 @@ RUN cp freeradius-ldap/config/default /etc/freeradius/3.0/sites-available/defaul
 RUN cp freeradius-ldap/config/inner-tunnel /etc/freeradius/3.0/sites-available/inner-tunnel
 RUN cp freeradius-ldap/config/ldap.template /etc/freeradius/3.0/mods-available/ldap
 RUN mkdir /etc/freeradius/3.0/certs/ssl
-# ldap预认证部分
-RUN cp freeradius-ldap/config/exec /etc/freeradius/3.0/mods-available/exec
-RUN ln -sf /etc/freeradius/3.0/mods-available/exec /etc/freeradius/3.0/mods-enabled/exec
 
 
 # 添加启动脚本
