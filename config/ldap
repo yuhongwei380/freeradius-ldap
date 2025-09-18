@@ -126,7 +126,7 @@ ldap {
 	#  the name value to be derived from an xlat expansion, or an
 	#  attribute ref.
 	update {
-		control:Password-With-Header	+= 'sambaNTPassword'
+#		control:Password-With-Header	+= 'sambaNTPassword'
 		control:NT-Password 		:= 'sambaNTPassword'
 		#control:NT-Password		:= 'ntPassword'
 #		reply:Reply-Message		:= 'radiusReplyMessage'
