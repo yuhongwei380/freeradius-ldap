@@ -127,7 +127,7 @@ ldap {
 	#  attribute ref.
 	update {
 		control:Password-With-Header	+= 'sambaNTPassword'
-		control:NT-Password 		:= 'sambaNTPassword'
+		#control:NT-Password 		:= 'sambaNTPassword'
 		#control:NT-Password		:= 'ntPassword'
 #		reply:Reply-Message		:= 'radiusReplyMessage'
 #		reply:Tunnel-Type		:= 'radiusTunnelType'
@@ -197,7 +197,8 @@ ldap {
 		#  For Active Directory, you should use
 		#  "samaccountname=" instead of "uid="
 		#
-		filter = "(mail=%{%{Stripped-User-Name}:-%{User-Name}})"
+		#filter = "(mail=%{%{Stripped-User-Name}:-%{User-Name}})"
+		filter = "(|(userPrincipalName=%{%{Stripped-User-Name}:-%{User-Name}})(mail=%{%{Stripped-User-Name}:-%{User-Name}}))"
 
 		#  For Active Directory nested group, you should comment out the previous 'filter = ...'
 		#  and use the below. Where 'group' is the group you are querying for.
