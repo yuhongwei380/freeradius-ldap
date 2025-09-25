@@ -349,6 +349,11 @@ authorize {
 	digest
 	
 	ldap
+	if ((ok || updated) && User-Password && !control:Auth-Type) {
+        update control {
+            Auth-Type := LDAP
+        }
+    }
 	#
 	#  The WiMAX specification says that the Calling-Station-Id
 	#  is 6 octets of the MAC.  This definition conflicts with
