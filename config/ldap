@@ -26,7 +26,7 @@ ldap {
 	#  Administrator account for searching and possibly modifying.
 	#  If using SASL + KRB5 these should be commented out.
 	identity = 'uid=admin'
-	password = 'Vesoft123.'
+	password = 'Password123.'
 
 	#  Unless overridden in another section, the dn from which all
 	#  searches will start from.
