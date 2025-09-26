@@ -1,7 +1,9 @@
 ## Environment:
+```
 OS: Ubuntu 22.04 LTS
 CPU: 4 cores
 Memory: 8GB
+```
 
 This project primarily interfaces with the AzureAD-LDAP-wrapper project; it indirectly enables FreeRADIUS to integrate with Azure AD (now known as Entra ID).
 
