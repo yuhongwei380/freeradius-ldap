@@ -1,6 +1,6 @@
 # Language：
 
-[English Documentation](./README-EN.md)
+[English](./README-EN.md) / [简体中文](./README-CN.md)
 
 # 环境：
 OS：ubuntu22.04 LTS
