@@ -62,9 +62,9 @@ chmod 755 /etc/freeradius/3.0/certs/ssl
 ```
 
 Only use `radtest `Test succcess 
-
-<img width="1022" height="199" alt="image" src="https://github.com/user-attachments/assets/59b9f9b4-89bc-424c-ae09-f01be0b91c92" />
-
+```
+radtest eva.wu@example.com  password  192.168.8.228  1812 nebula
+```
 
 
 
