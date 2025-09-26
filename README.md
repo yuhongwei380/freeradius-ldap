@@ -1,56 +1,55 @@
-# 环境：
-OS：ubuntu22.04 LTS
+# Environment:
+OS: Ubuntu 22.04 LTS
+CPU: 4 cores
+Memory: 8GB
 
-cpu: 4C
+This project primarily interfaces with the AzureAD-LDAP-wrapper project; it indirectly enables FreeRADIUS to integrate with Azure AD (now known as Entra ID).
 
-MEM: 8G 
+# Important Note: A user's password must first be authenticated once by the AzureAD-LDAP-wrapper service before it is encrypted and stored. Only then can FreeRADIUS successfully authenticate the user. (Issue Resolved)
+Solution: Added pre-authentication logic.
 
-本项目主要是对接AzureAD-LDAP-wrapper 项目；变相实现 freeradius对接到Azure AD （现在是Entra ID）
+# Usage Instructions
 
-# 说明： 密码需要先AzureAD-LDAP-wrapper 认证过一次，然后才会被加密保存，Freeradius才能正确进行用户认证。（已解决）
-解决方法： 新增预认证的逻辑。
+## 1. Docker Image Deployment
+You need to prepare your own SSL certificates.
 
-# 使用方法
-
-# 1.Docker镜像
-需要自行准备ssl证书
-
+```
 chmod 644 ssl/radius.crt
-
 chmod 644 ssl/radius.key
-
 chmod 644 ssl/radius_ca.pem
-
 chmod 755 ssl/
+```
 
-按照项目里的`docker-compose.yml` 和 `.env` 来进行配置 你的ldap服务器；推荐是配置在一台服务器里，保证网络连接。
+Configure your LDAP server according to the `docker-compose.yml` and `.env` files in the project. It is recommended to deploy on the same server to ensure network connectivity.
 
 
-# 2.二进制部署
-## 2.1常规安装：
+# 2.Binary Deployment
+## 2.1 Standard Installation:
 ```
 apt update && apt install freeradius  freeradius-ldap
 ```
-## 2.2 修改配置文件
-按照config中的去取消注释关于ldap的部分
+## 2.2 Modify Configuration Files
+Uncomment the sections related to LDAP in the following files, as shown in the config directory:
 ```
+
 /etc/freeradius/3.0/sites-available/default
+
 /etc/freeradius/3.0/sites-available/inner-tunnel
 ```
-按照config中的，修改ldap文件
-
+Modify the LDAP configuration file according to the example in the project (ldap file in config):
 ```
 /etc/freeradius/3.0/sites-available/ldap
 ```
-note：
-密码部分参照项目中ldap文件修改。或者直接拷贝（需要修改掉变量ldap_server等）
 
 
-发现azure中组里有成员，需要修改配置：按照提示`If using Active Directory you are likely to need "group"  instead of "posixGroup".`修改
+Modify the password section in the LDAP file as shown in the project's example, or copy it directly (remember to replace variables like ldap_server etc.).
+
+If groups in Azure AD contain members, you need to adjust the configuration. Follow the hint If using Active Directory you are likely to need "group" instead of "posixGroup". and change:
+
 ```
 filter = '(objectClass=Group)'
 ```
-ssl
+Set permissions for SSL certificates:
 ```
 chmod 644 /etc/freeradius/3.0/certs/ssl/radius.crt
 chmod 644 /etc/freeradius/3.0/certs/ssl/radius.key
