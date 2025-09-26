@@ -7,6 +7,8 @@ Memory: 8GB
 
 This project primarily interfaces with the AzureAD-LDAP-wrapper project; it indirectly enables FreeRADIUS to integrate with Azure AD (now known as Entra ID).
 
+
+
 ## Important Note: A user's password must first be authenticated once by the AzureAD-LDAP-wrapper service before it is encrypted and stored. Only then can FreeRADIUS successfully authenticate the user. (Issue Resolved)
 Solution: Added pre-authentication logic.
 
@@ -59,6 +61,9 @@ chmod 644 /etc/freeradius/3.0/certs/ssl/radius_ca.pem
 chmod 755 /etc/freeradius/3.0/certs/ssl
 ```
 
+Only use `radtest `Test succcess 
+
+<img width="1022" height="199" alt="image" src="https://github.com/user-attachments/assets/59b9f9b4-89bc-424c-ae09-f01be0b91c92" />
 
 
 
