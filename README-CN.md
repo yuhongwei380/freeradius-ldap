@@ -1,8 +1,3 @@
-# Language：
-
-[English](./README-EN.md) / [简体中文](./README-CN.md)
-
-
 ## 环境：
 OS：ubuntu22.04 LTS
 
@@ -17,8 +12,9 @@ MEM: 8G
 
 ## 使用方法
 
-## 1.Docker镜像
-需要自行准备ssl证书
+### 1.Docker镜像
+需要自行准备ssl证书 并且修改权限
+```
 
 chmod 644 ssl/radius.crt
 
@@ -27,16 +23,17 @@ chmod 644 ssl/radius.key
 chmod 644 ssl/radius_ca.pem
 
 chmod 755 ssl/
+```
 
 按照项目里的`docker-compose.yml` 和 `.env` 来进行配置 你的ldap服务器；推荐是配置在一台服务器里，保证网络连接。
 
 
-## 2.二进制部署
-### 2.1常规安装：
+### 2.二进制部署
+#### 2.1常规安装：
 ```
 apt update && apt install freeradius  freeradius-ldap
 ```
-### 2.2 修改配置文件
+#### 2.2 修改配置文件
 按照config中的去取消注释关于ldap的部分
 ```
 /etc/freeradius/3.0/sites-available/default
@@ -55,22 +52,10 @@ note：
 ```
 filter = '(objectClass=Group)'
 ```
-ssl
+需要自行准备ssl证书 并且修改权限
 ```
 chmod 644 /etc/freeradius/3.0/certs/ssl/radius.crt
 chmod 644 /etc/freeradius/3.0/certs/ssl/radius.key
 chmod 644 /etc/freeradius/3.0/certs/ssl/radius_ca.pem
 chmod 755 /etc/freeradius/3.0/certs/ssl
 ```
-
-
-
-
-
-
-
-
-
-
-
-
