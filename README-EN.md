@@ -53,7 +53,22 @@ If groups in Azure AD contain members, you need to adjust the configuration. Fol
 ```
 filter = '(objectClass=Group)'
 ```
-Set permissions for SSL certificates:
+
+# 3.SSL :Set permissions for SSL certificates:
+## For Binary deployment
+```
+chmod 644 /etc/freeradius/3.0/certs/ssl/radius.crt
+chmod 644 /etc/freeradius/3.0/certs/ssl/radius.key
+chmod 644 /etc/freeradius/3.0/certs/ssl/radius_ca.pem
+chmod 755 /etc/freeradius/3.0/certs/ssl
+```
+## FOR Docker Compose：
+```
+chmod 644 ssl/radius.crt
+chmod 644 ssl/radius.key
+chmod 644 ssl/radius_ca.pem
+chmod 755 ssl
+```
 ```
 chmod 644 /etc/freeradius/3.0/certs/ssl/radius.crt
 chmod 644 /etc/freeradius/3.0/certs/ssl/radius.key
