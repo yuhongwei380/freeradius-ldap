@@ -3,14 +3,11 @@
 FROM ubuntu:24.04
 
 #设置时区
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install -y tzdata
-RUN ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-RUN dpkg-reconfigure --frontend noninteractive tzdata  
+# ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y sudo curl
 
 # 安装 FreeRADIUS 和其他依赖项
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get install -y --no-install-recommends \
     ca-certificates \
     curl \
     libjson-pp-perl \
