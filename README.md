@@ -63,7 +63,10 @@ chmod 644 /etc/freeradius/3.0/certs/ssl/radius_ca.pem
 chmod 755 /etc/freeradius/3.0/certs/ssl
 ```
 
-
+test in Linux:
+```
+radtest <user> <pwd>  192.168.8.50  1812 nebula
+```
 
 
 
