@@ -16,6 +16,7 @@ RUN apt-get install -y --no-install-recommends \
     vim \
     logrotate \
     cron \
+    iputils-ping \
     ldap-utils   #预认证ldap必需
 
 
