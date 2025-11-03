@@ -55,6 +55,7 @@ note：
 ```
 filter = '(objectClass=Group)'
 ```
+# 3.SSL profile
 ssl 二进制部署的话：
 ```
 chmod 644 /etc/freeradius/3.0/certs/ssl/radius.crt
