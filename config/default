@@ -39,15 +39,7 @@ listen {
 }
 
 authorize {
-	# 新增：处理 EAP-TTLS 等协议的匿名身份
-	# 这是为了防止在建立加密隧道前，对 'anonymous' 用户进行 LDAP 查询，
-	# 因为 'anonymous' 不是真实用户，LDAP 中不存在，会导致认证失败。
-	if (&User-Name == "anonymous") {
-		update control {
-			Auth-Type := eap
-		}
-		return
-	}
+
 
 	# 用户名合法性过滤
 	filter_username
