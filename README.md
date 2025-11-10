@@ -12,7 +12,7 @@ MEM: 8G
 
 本项目主要是对接AzureAD-LDAP-wrapper 项目；变相实现 freeradius对接到Azure AD （现在是Entra ID）
 
-## 说明： 密码需要先AzureAD-LDAP-wrapper 认证过一次，然后才会被加密保存，Freeradius才能正确进行用户认证。（已解决）
+## 说明： 密码需要先AzureAD-LDAP-wrapper 认证过一次，然后才会被加密保存，Freeradius才能正确进行用户认证。（已解决） RADTEST无问题
 解决方法： 新增预认证的逻辑。
 
 ## 使用方法
