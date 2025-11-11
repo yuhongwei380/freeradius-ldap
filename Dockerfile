@@ -32,6 +32,8 @@ RUN git clone https://github.com/yuhongwei380/freeradius-ldap
 RUN cp freeradius-ldap/config/default /etc/freeradius/3.0/sites-available/default
 RUN cp freeradius-ldap/config/inner-tunnel /etc/freeradius/3.0/sites-available/inner-tunnel
 RUN cp freeradius-ldap/config/pap /etc/freeradius/3.0/mods-available/pap
+RUN cp freeradius-ldap/config/eap /etc/freeradius/3.0/mods-available/eap
+RUN ln -s  /etc/freeradius/3.0/mods-enabled/eap /etc/freeradius/3.0/mods-available/eap
 RUN cp freeradius-ldap/config/ldap /etc/freeradius/3.0/mods-available/ldap
 RUN mkdir /etc/freeradius/3.0/certs/ssl
 
