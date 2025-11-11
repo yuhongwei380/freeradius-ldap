@@ -25,7 +25,7 @@ eap {
 	#  default type configured here.
 	#
 	#default_eap_type = md5
-    # 解决bug；windows无法连接的问题
+
     default_eap_type = pap
     copy_request_to_tunnel = no
     use_tunneled_reply = no
