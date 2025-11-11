@@ -29,12 +29,12 @@ RUN apt-get update && apt-get install -y freeradius freeradius-ldap
 # 下载配置文件并且拷贝
 WORKDIR /tmp
 RUN git clone https://github.com/yuhongwei380/freeradius-ldap
-RUN cp freeradius-ldap/config/default /etc/freeradius/3.0/sites-available/default
-RUN cp freeradius-ldap/config/inner-tunnel /etc/freeradius/3.0/sites-available/inner-tunnel
-RUN cp freeradius-ldap/config/pap /etc/freeradius/3.0/mods-available/pap
-RUN cp freeradius-ldap/config/eap /etc/freeradius/3.0/mods-available/eap
+RUN cp -f freeradius-ldap/config/default /etc/freeradius/3.0/sites-available/default
+RUN cp -f freeradius-ldap/config/inner-tunnel /etc/freeradius/3.0/sites-available/inner-tunnel
+RUN cp -f freeradius-ldap/config/pap /etc/freeradius/3.0/mods-available/pap
+RUN cp -f freeradius-ldap/config/eap /etc/freeradius/3.0/mods-available/eap
 RUN ln -s  /etc/freeradius/3.0/mods-enabled/eap /etc/freeradius/3.0/mods-available/eap
-RUN cp freeradius-ldap/config/ldap /etc/freeradius/3.0/mods-available/ldap
+RUN cp -f freeradius-ldap/config/ldap /etc/freeradius/3.0/mods-available/ldap
 RUN mkdir /etc/freeradius/3.0/certs/ssl
 
 
