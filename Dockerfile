@@ -33,7 +33,7 @@ RUN cp -f freeradius-ldap/config/default /etc/freeradius/3.0/sites-available/def
 RUN cp -f freeradius-ldap/config/inner-tunnel /etc/freeradius/3.0/sites-available/inner-tunnel
 RUN cp -f freeradius-ldap/config/pap /etc/freeradius/3.0/mods-available/pap
 RUN cp -f freeradius-ldap/config/eap /etc/freeradius/3.0/mods-available/eap
-RUN ln -s  /etc/freeradius/3.0/mods-enabled/eap /etc/freeradius/3.0/mods-available/eap
+RUN ln -s  /etc/freeradius/3.0/mods-available/eap /etc/freeradius/3.0/mods-enabled/eap
 RUN cp -f freeradius-ldap/config/ldap /etc/freeradius/3.0/mods-available/ldap
 RUN mkdir /etc/freeradius/3.0/certs/ssl
 
