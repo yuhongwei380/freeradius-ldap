@@ -1,10 +1,10 @@
 
-本项目主要是对接AzureAD-LDAP-wrapper 项目；变相实现 freeradius对接到Azure AD （现在是Entra ID）
+## 本项目主要是对接AzureAD-LDAP-wrapper 项目；变相实现 freeradius对接到Azure AD （现在是Entra ID）
 
-## 说明： 密码需要先AzureAD-LDAP-wrapper 认证过一次，然后才会被加密保存，Freeradius才能正确进行用户认证。（已解决） RADTEST无问题
-解决方法： 新增预认证的逻辑。
+## 说明：新增预认证的逻辑,首次登陆即可触发认证，Freeradius才能正确进行用户认证。
 
-# Language:
+
+# 说明:
 
 目前的问题：</p>
 1.windows这边采用 PEAP+MSCHAPV2，且需要手动关闭：受保护的eap设置- 关闭通过验证证书来验证服务器的身份。</p>
