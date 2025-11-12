@@ -6,7 +6,7 @@
 
 # Language:
 
-目前的问题：
+目前的问题：</p>
 1.windows这边采用 PEAP+MSCHAPV2，且需要手动关闭：受保护的eap设置- 关闭通过验证证书来验证服务器的身份。</p>
 2.手机端仍然使用PAP-TTLS</p>
 3.MACOS/IOS端使用 描述文件，TTLS</p>
