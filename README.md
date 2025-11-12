@@ -24,16 +24,15 @@ MEM: 8G
 
 ### 1.Docker镜像
 需要自行准备ssl证书
-
-chmod 644 ssl/radius.crt
-
-chmod 644 ssl/radius.key
-
-chmod 644 ssl/radius_ca.pem
-
-chmod 755 ssl/
-
+```
+radius.crt
+radius.key
+radius_ca.pem
+```
 按照项目里的`docker-compose.yml` 和 `.env` 来进行配置 你的ldap服务器；推荐是配置在一台服务器里，保证网络连接。
+```
+cp docker-compose.yml.template  docker-compose.yml
+```
 
 
 ### 2.二进制部署
