@@ -22,7 +22,7 @@ MEM: 8G
 
 ## 三、使用方法
 
-## 1.Docker镜像
+### 1.Docker镜像
 需要自行准备ssl证书
 
 chmod 644 ssl/radius.crt
@@ -36,12 +36,12 @@ chmod 755 ssl/
 按照项目里的`docker-compose.yml` 和 `.env` 来进行配置 你的ldap服务器；推荐是配置在一台服务器里，保证网络连接。
 
 
-## 2.二进制部署
-### 2.1常规安装：
+### 2.二进制部署
+#### 2.1常规安装：
 ```
 apt update && apt install freeradius  freeradius-ldap
 ```
-### 2.2 修改配置文件
+#### 2.2 修改配置文件
 按照config中的去取消注释关于ldap的部分
 ```
 /etc/freeradius/3.0/sites-available/default
@@ -60,7 +60,7 @@ note：
 ```
 filter = '(objectClass=Group)'
 ```
-# 3.SSL profile
+### 3.SSL profile
 ssl 二进制部署的话：
 ```
 chmod 644 /etc/freeradius/3.0/certs/ssl/radius.crt
@@ -76,7 +76,7 @@ chmod 644 ssl/radius_ca.pem
 chmod 755 ssl
 ```
 
-
+### 4.本地测试
 test in Linux:
 ```
 radtest <user> <pwd>  192.168.8.50  1812 nebula
