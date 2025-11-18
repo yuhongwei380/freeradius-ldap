@@ -66,7 +66,8 @@ note：
 密码部分参照项目中ldap文件修改。或者直接拷贝（需要修改掉变量ldap_server等）
 
 
-发现azure中组里有成员，需要修改配置：按照提示`If using Active Directory you are likely to need "group"  instead of "posixGroup".`修改
+发现azure中组里有成员，需要修改配置：按照提示`If using Active Directory you are likely to need "group"  instead of "posixGroup". 修改
+
 ```
 filter = '(objectClass=Group)'
 ```
