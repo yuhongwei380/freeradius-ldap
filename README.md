@@ -4,6 +4,17 @@
 ## 说明：新增预认证的逻辑,首次登陆即可触发认证，Freeradius才能正确进行用户认证。
 
 
+## Docker 镜像仓库地址：
+https://hub.docker.com/repository/docker/yuhongwei1997/freeradius-ldap-wrapper/general </p>
+TAG:1.0 & test-251112 </p>
+```
+目前的问题： </p>
+1.windows这边采用 PEAP+MSCHAPV2，且需要手动关闭：受保护的eap设置- 关闭通过验证证书来验证服务器的身份。 
+2.手机端仍然使用PAP-TTLS 
+3.MACOS/IOS端使用 描述文件，TTLS
+``
+TAG:test 测试镜像:用于windows解决pap-ttls的问题；未解决，不可使用</p>
+
 # 一、说明:
 
 目前的问题：</p>
