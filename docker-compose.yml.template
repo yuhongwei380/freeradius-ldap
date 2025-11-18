@@ -1,7 +1,7 @@
 version: '3'
 services:
   radius:
-    image: yuhongwei1997/freeradius-ldap-wrapper:latest
+    image: yuhongwei1997/freeradius-ldap-wrapper:1.0
     container_name: radius-azure
     env_file:
       - .env
