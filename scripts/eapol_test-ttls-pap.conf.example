@@ -1,0 +1,12 @@
+network={
+    key_mgmt=IEEE8021X
+    eap=TTLS
+    anonymous_identity="@example.com"
+    identity="USERNAME@example.com"
+    password="PASSWORD"
+    phase2="auth=PAP"
+
+    # Production should enable server certificate validation.
+    # ca_cert="/etc/ssl/certs/radius_ca.pem"
+    # domain_suffix_match="radius.example.com"
+}

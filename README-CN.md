@@ -12,6 +12,11 @@ MEM: 8G
 
 ## 使用方法
 
+## 认证策略（已更新）
+1. 统一推荐使用 `EAP-TTLS + PAP`（外层 TTLS，内层 PAP）。
+2. Windows 端建议保持“验证服务器证书”开启；请先下发/导入 `radius_ca.pem`，并确保服务器证书名称匹配。
+3. 如终端策略受限，可在同一 SSID 临时保留 PEAP 兼容配置作为过渡。
+
 ### 1.Docker镜像
 需要自行准备ssl证书 并且修改权限
 ```
@@ -58,4 +63,16 @@ chmod 644 /etc/freeradius/3.0/certs/ssl/radius.crt
 chmod 644 /etc/freeradius/3.0/certs/ssl/radius.key
 chmod 644 /etc/freeradius/3.0/certs/ssl/radius_ca.pem
 chmod 755 /etc/freeradius/3.0/certs/ssl
+```
+
+### 3. 本地验证（建议）
+先做明文口令链路验证：
+```
+radtest <user> <pwd> 127.0.0.1 0 <radius_secret>
+```
+
+再做 802.1X `EAP-TTLS/PAP` 验证（推荐）：
+```
+# 参考 scripts/eapol_test-ttls-pap.conf.example 生成配置
+./wpa_supplicant/eapol_test -s <radius_secret> -c ./scripts/eapol_test-ttls-pap.conf
 ```

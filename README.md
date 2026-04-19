@@ -8,19 +8,19 @@
 https://hub.docker.com/repository/docker/yuhongwei1997/freeradius-ldap-wrapper/general </p>
 TAG:1.0 & test-251112 </p>
 ```
-目前的问题： </p>
-1.windows这边采用 PEAP+MSCHAPV2，且需要手动关闭：受保护的eap设置- 关闭通过验证证书来验证服务器的身份。 
-2.手机端仍然使用PAP-TTLS 
-3.MACOS/IOS端使用 描述文件，TTLS
+当前策略（推荐）：</p>
+1.统一使用 EAP-TTLS + PAP（外层 TTLS，内层 PAP）</p>
+2.Windows 端请优先使用 TTLS + PAP（Windows 8+），并保持“验证服务器证书”开启</p>
+3.iOS/macOS 可继续使用描述文件下发 TTLS 配置</p>
 ``
-TAG:test 测试镜像:用于windows解决pap-ttls的问题；未解决，不可使用</p>
+TAG:test 测试镜像:用于历史兼容验证，不作为当前推荐方案</p>
 
 # 一、说明:
 
-目前的问题：</p>
-1.windows这边采用 PEAP+MSCHAPV2，且需要手动关闭：受保护的eap设置- 关闭通过验证证书来验证服务器的身份。</p>
-2.手机端仍然使用PAP-TTLS</p>
-3.MACOS/IOS端使用 描述文件，TTLS</p>
+当前策略：</p>
+1.统一采用 EAP-TTLS + PAP。</p>
+2.不建议关闭“验证服务器证书”，请在终端侧导入并信任 CA 后开启校验。</p>
+3.MACOS/IOS 仍可使用描述文件下发 TTLS。</p>
 
 # 二、部署环境
 ## 环境：
@@ -92,7 +92,11 @@ test in Linux:
 radtest <user> <pwd>  192.168.8.50  1812 nebula
 ```
 
-
+test EAP-TTLS/PAP:
+```
+# 先按项目 scripts/eapol_test-ttls-pap.conf.example 生成你的配置
+./wpa_supplicant/eapol_test -s <radius_secret> -c ./scripts/eapol_test-ttls-pap.conf
+```
 
 
 
